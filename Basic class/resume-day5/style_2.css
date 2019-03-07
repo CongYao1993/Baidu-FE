@@ -1,0 +1,55 @@
+* {
+    font-family: Helvetica, Arial, sans-serif;
+}
+
+#container {
+    border: 1px solid #000;
+    margin: 5px;
+    display: flex;
+}
+
+#title {
+    font-size: 30px;
+    color: #fff;
+    text-align: center;
+    padding-top: 50px;
+    background-color: #66f;
+    width: 200px;
+    margin-top: 0;
+    margin-bottom: 0;
+}
+
+#content {
+    margin-left: 20px;
+}
+
+.subtitle {
+    font-size: 24px;
+}
+
+dt,
+dd {
+    font-size: 16px;
+    font-weight: bold;
+}
+
+dd {
+    margin-left: 0;
+}
+
+.info,
+.contact {
+    display: inline;
+}
+
+.info+dl,
+.contact+dl {
+    margin-left: 30px;
+}
+
+.info>dt,
+dd,
+.contact>dt,
+dd {
+    display: inline;
+}

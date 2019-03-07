@@ -1,0 +1,54 @@
+* {
+    font-family: Helvetica, Arial, sans-serif;
+}
+
+#title {
+    font-size: 30px;
+}
+
+.subtitle {
+    font-size: 24px;
+}
+
+dt,
+dd {
+    font-size: 16px;
+    font-weight: bold;
+}
+
+dd {
+    margin-left: 0;
+}
+
+.info,
+.contact {
+    display: inline;
+}
+
+.info+dl,
+.contact+dl {
+    margin-left: 30px;
+}
+
+.info>dt,
+dd,
+.contact>dt,
+dd {
+    display: inline;
+}
+
+a:link {
+    color: yellow;
+}
+
+a:visited {
+    color: #f00;
+}
+
+a:hover {
+    color: #0f0;
+}
+
+a:active {
+    color: #00f;
+}
