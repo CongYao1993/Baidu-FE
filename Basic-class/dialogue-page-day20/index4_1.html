@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<meta http-equiv="X-UA-Compatible" content="IE=Edge">
+<html lang="zh-CN">
+    <head>
+        <meta charset="UTF-8">
+        <title>IFE ECMAScript</title>
+    </head>
+    <body>
+        <div id="fade-obj" style="width:300px;height:300px;background:#000"></div>
+        <button id="fade-btn">淡出</button>
+        <script>
+            var btn=document.getElementById('fade-btn');
+            var obj=document.getElementById('fade-obj');
+            obj.style.opacity=1;
+            // 淡出/淡入
+            function fadeToggle(){
+                // 1.按钮状态不可点击
+                btn.disabled=true;
+                
+                var num=obj.style.opacity;
+                var txt=btn.textContent;
+                // 2.修改透明度
+                if(txt=="淡出"&&num>0){
+                    obj.style.opacity=num-0.1;
+                    setTimeout(fadeToggle,50);
+                }else if(txt=="淡入"&&num<1){
+                    obj.style.opacity=parseFloat(num)+0.1;
+                    setTimeout(fadeToggle,50);
+                }else{
+                    // 3.修改按钮文字
+                    btn.textContent=btn.textContent=="淡入"?"淡出":"淡入";
+                    // 4.按钮状态恢复
+                    btn.disabled=false;
+                }
+            }
+            btn.addEventListener("click",fadeToggle,false);
+        </script>
+    </body>
+</html>        

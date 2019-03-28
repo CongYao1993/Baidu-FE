@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<meta http-equiv="X-UA-Compatible" content="IE=Edge">
+<html lang="zh-CN">
+    <head>
+        <meta charset="UTF-8">
+        <title>IFE ECMAScript</title>
+    </head>
+    <body>
+        <input id="name" type="text">    
+        <button id="submit-btn">Submit</button>
+        <script>
+            // 当点击按钮 submit-btn 时，在console中输出 name 中的内容
+            var clickHandler1=function(event){
+                console.log(document.getElementById("name").value);
+            }
+            var btn=document.getElementById("submit-btn");
+            btn.addEventListener('click',clickHandler1,false);
+            // 在输入过程中，如果按回车键，则同样执行上一条的需求
+            // 在输入过程中，如果按 ESC 键，则把输入框中的内容清空
+            var clickHandler2=function(event){
+                var name=document.getElementById("name");
+                if(event.keyCode==13){
+                    console.log(name.value);
+                }else if(event.keyCode==27){
+                    name.value="";
+                }
+            }
+            window.addEventListener('keydown',clickHandler2);
+        </script>
+    </body>
+</html>        
