@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<meta http-equiv="X-UA-Compatible" content="IE=Edge">
+<html lang="zh-CN">
+    <head>
+        <meta charset="UTF-8">
+        <title>IFE ECMAScript</title>
+    </head>
+    <body>
+        <p>栈顶对应数组中最后一个元素</p>
+        <input id="stack-input" type="text">
+        <p id="stack-cont">栈内容：apple-&gt;pear</p>    
+        <button id="push-btn">进栈</button>
+        <button id="pop-btn">退栈</button>
+        <button id="font-btn">打印栈顶元素内容</button>
+        <button id="empty-btn">判断栈是否为空</button>
+        <p id="result"></p>
+        
+        <script>
+            var stack = ["apple", "pear"];
+        
+            var input=document.getElementById("stack-input");
+            var cont=document.getElementById("stack-cont");
+            var push_btn=document.getElementById("push-btn");
+            var pop_btn=document.getElementById("pop-btn");
+            var font_btn=document.getElementById("font-btn");
+            var empty_btn=document.getElementById("empty-btn");
+            var result=document.getElementById("result");
+
+            push_btn.addEventListener("click",function(event){
+                stack.push(input.value);
+                cont.textContent="栈内容："+stack.join("->");
+            })
+            pop_btn.addEventListener("click",function(event){
+                stack.pop();
+                cont.textContent="栈内容："+stack.join("->");
+            })
+            font_btn.addEventListener("click",function(event){
+                result.textContent="栈顶元素内容："+stack[stack.length-1];
+            })
+            empty_btn.addEventListener("click",function(event){
+                if(stack.length){
+                    result.textContent="栈不为空";
+                }else{
+                    result.textContent="栈为空";
+                }
+            })
+        </script>
+    </body>
+</html>

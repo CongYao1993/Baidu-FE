@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<meta http-equiv="X-UA-Compatible" content="IE=Edge">
+<html lang="zh-CN">
+    <head>
+        <meta charset="UTF-8">
+        <title>IFE ECMAScript</title>
+    </head>
+    <body>
+        <div>
+            <label>Number A:<input id="radio-a" type="radio" name="math-obj" value="a"></label><input id="num-a" type="text">
+            <label>Number B:<input id="radio-b" type="radio" name="math-obj" value="b"></label><input id="num-b" type="text">
+        </div>
+        <div id="btns">
+            <button>判断当前选中的输入框输入内容是否为数字</button>
+            <button>把 A 四舍五入为 B 个小数位数的数字</button>
+            <button>当前选中数字的绝对值</button>
+            <button>对当前选中的数字进行上舍入</button>
+            <button>对当前选中的数字进行下舍入</button>
+            <button>把当前选中的数字四舍五入为最接近的整数</button>
+            <button>返回 A 和 B 中的最高值</button>
+            <button>返回 A 和 B 中的最低值</button>        
+        </div>
+        <p id="result"></p>
+        <script>
+            var radio_a=document.getElementById("radio-a");
+            var radio_b=document.getElementById("radio-b");
+            var num_a=document.getElementById("num-a");
+            var num_b=document.getElementById("num-b");
+            var btns=document.getElementById("btns");
+            var result=document.getElementById("result");
+
+            // 判断输入A和B是否为数字
+            function isNums(){
+                var isNum_a=!isNaN(Number(num_a.value));
+                var isNum_b=!isNaN(Number(num_b.value));
+                if(isNum_a&&isNum_b){
+                    return true;
+                }else{
+                    if(!isNum_a&&!isNum_b){
+                        console.log("错误，A和B均不是数字");
+                    }else if(!isNum_a){
+                        console.log("错误，A不是数字");
+                    }else{
+                        console.log("错误，B不是数字");
+                    }
+                    return false;
+                }
+            }
+
+            btns.addEventListener("click",function(event){
+                a=Number(num_a.value);
+                b=Number(num_b.value);
+                switch(event.target.textContent){
+                    case "判断当前选中的输入框输入内容是否为数字":
+                        if(radio_a.checked){
+                            if(isNaN(a)){
+                                result.textContent="false";
+                            }else{
+                                result.textContent="true";
+                            }
+                        }else if(radio_b.checked){
+                            if(isNaN(b)){
+                                result.textContent="false";
+                            }else{
+                                result.textContent="true";
+                            }
+                        }
+                        break;
+                    case "把 A 四舍五入为 B 个小数位数的数字":
+                        if(isNums()){
+                            result.textContent=a.toFixed(b.toFixed(0));
+                        }else{
+                            result.textContent="";
+                        }
+                        break;
+                    case "当前选中数字的绝对值":
+                        if(radio_a.checked){
+                            if(!isNaN(a)){
+                                result.textContent=Math.abs(a);
+                            }else{
+                                result.textContent="";
+                                console.log("错误，A不是数字");
+                            }
+                        }else if(radio_b.checked){
+                            if(!isNaN(b)){
+                                result.textContent=Math.abs(b);
+                            }else{
+                                result.textContent="";
+                                console.log("错误，B不是数字");
+                            }
+                        }
+                        break;
+                    case "对当前选中的数字进行上舍入":
+                        if(radio_a.checked){
+                            if(!isNaN(a)){
+                                result.textContent=Math.ceil(a);
+                            }else{
+                                result.textContent="";
+                                console.log("错误，A不是数字");
+                            }
+                        }else if(radio_b.checked){
+                            if(!isNaN(b)){
+                                result.textContent=Math.ceil(b);
+                            }else{
+                                result.textContent="";
+                                console.log("错误，B不是数字");
+                            }
+                        }
+                        break;
+                    case "对当前选中的数字进行下舍入":
+                        if(radio_a.checked){
+                            if(!isNaN(a)){
+                                result.textContent=Math.floor(a);
+                            }else{
+                                result.textContent="";
+                                console.log("错误，A不是数字");
+                            }
+                        }else if(radio_b.checked){
+                            if(!isNaN(b)){
+                                result.textContent=Math.floor(b);
+                            }else{
+                                result.textContent="";
+                                console.log("错误，B不是数字");
+                            }
+                        }
+                        break;
+                    case "把当前选中的数字四舍五入为最接近的整数":
+                        if(radio_a.checked){
+                            if(!isNaN(a)){
+                                result.textContent=Math.round(a);
+                            }else{
+                                result.textContent="";
+                                console.log("错误，A不是数字");
+                            }
+                        }else if(radio_b.checked){
+                            if(!isNaN(b)){
+                                result.textContent=Math.round(b);
+                            }else{
+                                result.textContent="";
+                                console.log("错误，B不是数字");
+                            }
+                        }
+                        break;
+                    case "返回 A 和 B 中的最高值":
+                        if(isNums()){
+                            result.textContent=Math.max(a,b);
+                        }else{
+                            result.textContent="";
+                        }
+                        break;
+                    case "返回 A 和 B 中的最低值":
+                        if(isNums()){
+                            result.textContent=Math.min(a,b);
+                        }else{
+                            result.textContent="";
+                        }
+                        break;
+                }
+                
+            })
+        </script>
+    </body>
+</html>        
